@@ -61,7 +61,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 // 表單資料
-const email = ref('test123@gamil.com')
+const email = ref('')
 const password = ref('')
 
 const handleLogin = async () => {

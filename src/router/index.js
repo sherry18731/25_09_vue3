@@ -1,4 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { defineAsyncComponent } from 'vue'
+
+// 動態導入
+const LoginView = defineAsyncComponent(() => import('../views/LoginView.vue'))
+const RegisteUpView = defineAsyncComponent(() => import('../views/RegisterView.vue'))
+const TodoListView = defineAsyncComponent(() => import('../views/TodoListView.vue'))
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,19 +13,19 @@ const router = createRouter({
       path: '/todolist',
       name: 'todolist',
       meta: { requiresAuth: true, title: 'Todo List' },
-      component: () => import('../views/TodoListView.vue')
+      component: TodoListView,
     },
     {
       path: '/login',
       name: 'login',
       meta: { title: '登入' },
-      component: () => import('../views/LoginView.vue')
+      component: LoginView,
     },
     {
       path: '/register',
       name: 'register',
       meta: { title: '註冊' },
-      component: () => import('../views/RegisterView.vue')
+      component: RegisteUpView,
     }
   ],
 })
